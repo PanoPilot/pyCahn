@@ -8,6 +8,8 @@
 #   2. (Watcher) Watch Live Market and save data to database and throw events according to req. candle timeframe
 
 
+# Define Custom imports
+from Exchange import Exchange
 
 class DataManager():
 
@@ -19,6 +21,9 @@ class DataManager():
         self.exchange = exchange
         self.asset = asset
         self.currency = currency
+
+        #init exchange
+
  
 
     def import_ohlcv(self, from_time, to_time):
