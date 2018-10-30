@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.pythonPath": "/Users/ckletti/anaconda3/envs/pycahn-env/bin/python"
+	}
+}
