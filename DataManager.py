@@ -23,6 +23,8 @@ class DataManager():
         self.currency = currency
 
         #init exchange
+        self.exchange = Exchange()
+
 
  
 
