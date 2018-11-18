@@ -18,15 +18,20 @@ class DataManager():
         #HERE: add a check of suppored exchanges assets etc!
 
         #print (exchange, asset, currency)
-        self.exchange = exchange
+        self.exchange_name = exchange
         self.asset = asset
         self.currency = currency
 
         #init exchange
-        self.exchange = Exchange()
+        self.kraken = Exchange()
 
 
  
 
-    def import_ohlcv(self, from_time, to_time):
-        pass
+    def import_ohlcv(self, from_date, to_date):
+        print ('Importing:', self.exchange_name, self.currency, self.asset, 'From:', from_date, 'to', to_date)
+
+        self.kraken.getHistory_OHLCV(self.asset,self.currency,from_date,to_date)
+        
+
+

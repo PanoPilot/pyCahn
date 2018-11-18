@@ -16,6 +16,6 @@ class Exchange():
         pass
 
 
-    def getHistory_OHLCV(self, asset, currency):
+    def getHistory_OHLCV(self, asset, currency, from_date, to_date):
         pass
 
