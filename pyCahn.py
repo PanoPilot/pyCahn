@@ -15,7 +15,7 @@ from DataManager import DataManager
 
 if __name__ == "__main__":
     
-    data_manager = DataManager("Kraken", "XBT", "EUR")
+    data_manager = DataManager("Kraken", "ETH", "EUR")
     
     #print(data_manager.asset, data_manager.exchange_name, data_manager.currency)
 

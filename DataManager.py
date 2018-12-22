@@ -9,7 +9,8 @@
 
 
 # Define Custom imports
-from Exchange import Exchange
+from Exchanges.Exchange import Exchange
+from Exchanges.Kraken_Ex import Kraken_Ex
 
 class DataManager():
 
@@ -23,15 +24,18 @@ class DataManager():
         self.currency = currency
 
         #init exchange
-        self.kraken = Exchange()
-
+        #REMARK: Switch req. later based on different exchanges 
+        self.exchange = Kraken_Ex()
 
  
 
     def import_ohlcv(self, from_date, to_date):
         print ('Importing:', self.exchange_name, self.currency, self.asset, 'From:', from_date, 'to', to_date)
 
-        self.kraken.getHistory_OHLCV(self.asset,self.currency,from_date,to_date)
+        #self.exchange.getHistory_OHLCV(self.asset,self.currency,from_date)
+
+        ##self.exchange.import_ohlcv(self.asset,self.currency,from_date,to_date)
+        self.exchange.getHistory_Trades(self.asset,self.currency,from_date,to_date)
         
 
 
