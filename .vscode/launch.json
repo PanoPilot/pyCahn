@@ -4,12 +4,14 @@
     // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "Python: Current File (Integrated Terminal)",
+            "name": "Python: pyCahn.py",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "program": "${workspaceFolder}/pyCahn.py",
+            "console": "integratedTerminal",
+            "args" : ["-i", "config-IMPORT-msci_world_index.json", "-a", "config-ASSET-msci_world_index.json"]
         },
         {
             "name": "Python: Attach",

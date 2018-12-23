@@ -1,0 +1,40 @@
+{   "ASSETS": {
+        "TYPE": "INDEX",
+        "NAME": "MSCI WORLD",
+        "SYMBOLS": [
+            {
+                "NAME": "APPLE",
+                "SYMBOL": "AAPL"
+            },
+            {
+                "NAME": "AMAZON.COM",
+                "SYMBOL" : "AMZN"
+            },
+            {
+                "NAME": "MICROSOFT CORP",
+                "SYMBOL" : "MSFT"
+            },
+            {
+                "NAME": "FACEBOOK A",
+                "SYMBOL" : "FB"
+            },
+            {
+                "NAME": "JPMORGAN CHASE & CO",
+                "SYMBOL" : "JPM"
+            },
+            {
+                "NAME": "JOHNSON & JOHNSON",
+                "SYMBOL" : "JNJ"
+            },
+            {
+                "NAME": "EXXON MOBIL CORP",
+                "SYMBOL" : "XOM"
+            }
+        ],
+        "InfoSources": [
+            {"InfoSource1": "https://www.msci.com/constituents"},
+            {"InfoSource2": "https://www.ishares.com/de/privatanleger/de/produkte/251881/ishares-msci-world-ucits-etf-inc-fund?switchLocale=y&siteEntryPassthrough=true"}
+        ]
+    }
+}
+
