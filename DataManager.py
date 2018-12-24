@@ -13,6 +13,7 @@ from Exchanges.Exchange import Exchange
 from Exchanges.Kraken_Ex import Kraken_Ex
 
 import json
+import pandas as pd
 from yahoo_fin.stock_info import *
 
 I_TYPE_Y = "YF"
@@ -56,12 +57,17 @@ class DataManager():
     def start_import(self):
 
         #get assets to import
-        symbols = self.a_config["ASSETS"]["SYMBOLS"] 
+        symbols = self.a_config["ASSETS"]["SYMBOLS"]
+        i_from = self.i_config["IMPORT"]["FROM"]
+        i_to = self.i_config["IMPORT"]["TO"]
 
         #check import source
         if (self.i_config["IMPORT"]["TYPE"] == I_TYPE_Y):
             #ok in this case, use yahoo_fin package
-            df = self.yf_import_data_ohlcv(symbols)
+            df_ohlcv = self.yf_import_data_ohlcv(symbols, i_from, i_to)
+            #self.save_data_to_hdf(df, "test.h5")
+
+            
         elif(self.i_config["IMPORT"]["TYPE"] == I_TYPE_W):
             pass
         elif(self.i_config["IMPORT"]["TYPE"] == I_TYPE_E):
@@ -70,6 +76,21 @@ class DataManager():
         #print (df)
 
 
+
+    #######################################################################
+    # 
+    # Method to store a pandas dataframe to a hdf5 file
+    # Parameters:
+    #   df:         pandas dataframe 
+    #   hdf5_file:  full qualified name of hdf5 file
+    #
+    # 
+    ######################################################################## 
+    def save_data_to_hdf(self, df, hdf5_file):
+        
+        hdf = pd.HDFStore(hdf5_file)
+        hdf.put('KEY1', df, format='table', data_columns=True)
+        hdf.close()
 
 
     #######################################################################
@@ -82,16 +103,20 @@ class DataManager():
     #   Pandas Dataframe with imported data
     # 
     ######################################################################## 
-    def yf_import_data_ohlcv(self, symbols):
+    def yf_import_data_ohlcv(self, symbols, ifrom, ito):
 
-        #symbols = symbols[:3]
+        symbols = symbols[:2]
         data = pd.DataFrame([])
 
         for sym in symbols:
             print('Get Data for:', sym["SYMBOL"])
-            data = data.append(get_data(sym["SYMBOL"],index_as_date=False))
-       
+            data = data.append(get_data(sym["SYMBOL"], start_date = ifrom , end_date = ito, index_as_date=False), )
 
+        #print(data.dtypes)
+        data['date'] = data['date'].astype('datetime64[ns]')
+        data.sort_values(by=['date'], ascending=True, inplace=True)
+        data.reset_index(drop=True, inplace=True)
+        data.set_index(['date','ticker'], inplace=True)
         print(data)
         return data
 

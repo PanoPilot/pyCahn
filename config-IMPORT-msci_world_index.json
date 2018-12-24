@@ -3,7 +3,7 @@
         "SOURCE": "yahoo_fin",
         "STORE": "./database/msci_world.h5",
         "INTERVAL": 1440,
-        "FROM": "2018-01-01 00:00",
+        "FROM": "2017-01-01 00:00",
         "TO": "2018-12-20 00:00"
     }
 }

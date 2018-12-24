@@ -3,6 +3,10 @@
         "NAME": "MSCI WORLD",
         "SYMBOLS": [
             {
+                "NAME": "ComStage MSCI World ETF",
+                "SYMBOL": "X010.DE"
+            },
+            {
                 "NAME": "APPLE",
                 "SYMBOL": "AAPL"
             },
