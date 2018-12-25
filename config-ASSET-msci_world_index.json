@@ -1,6 +1,6 @@
 {   "ASSETS": {
         "TYPE": "INDEX",
-        "NAME": "MSCI WORLD",
+        "NAME": "MSCI_WORLD",
         "SYMBOLS": [
             {
                 "NAME": "ComStage MSCI World ETF",

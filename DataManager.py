@@ -65,7 +65,7 @@ class DataManager():
         if (self.i_config["IMPORT"]["TYPE"] == I_TYPE_Y):
             #ok in this case, use yahoo_fin package
             df_ohlcv = self.yf_import_data_ohlcv(symbols, i_from, i_to)
-            #self.save_data_to_hdf(df, "test.h5")
+            self.save_data_to_hdf(df_ohlcv, self.a_config["ASSETS"]["NAME"],"test.h5")
 
             
         elif(self.i_config["IMPORT"]["TYPE"] == I_TYPE_W):
@@ -86,10 +86,10 @@ class DataManager():
     #
     # 
     ######################################################################## 
-    def save_data_to_hdf(self, df, hdf5_file):
+    def save_data_to_hdf(self, df, key, hdf5_file):
         
         hdf = pd.HDFStore(hdf5_file)
-        hdf.put('KEY1', df, format='table', data_columns=True)
+        hdf.put(key, df, format='table', data_columns=True)
         hdf.close()
 
 
@@ -105,7 +105,7 @@ class DataManager():
     ######################################################################## 
     def yf_import_data_ohlcv(self, symbols, ifrom, ito):
 
-        symbols = symbols[:2]
+        symbols = symbols[:1]
         data = pd.DataFrame([])
 
         for sym in symbols:
