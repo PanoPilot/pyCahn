@@ -113,11 +113,15 @@ class DataManager():
             data = data.append(get_data(sym["SYMBOL"], start_date = ifrom , end_date = ito, index_as_date=False), )
 
         #print(data.dtypes)
+        #convert to datetime type object
         data['date'] = data['date'].astype('datetime64[ns]')
+        #sort values by datetime
         data.sort_values(by=['date'], ascending=True, inplace=True)
+        #renew index to date & symbol
         data.reset_index(drop=True, inplace=True)
         data.set_index(['date','ticker'], inplace=True)
-        print(data)
+
+        #print(data)
         return data
 
 
